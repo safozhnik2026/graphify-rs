@@ -194,22 +194,6 @@ graphify-rs save-result --question "QUESTION" --answer "ANSWER" --nodes NODE1 NO
 
 ---
 
-## For /graphify-rs add
-
-Fetch a URL and add it to the corpus:
-
-```bash
-graphify-rs ingest URL --output graphify-rs-out
-```
-
-Then rebuild:
-
-```bash
-graphify-rs build --path . --output graphify-rs-out
-```
-
----
-
 ## For --watch
 
 Start a background watcher that monitors a folder and auto-updates the graph:

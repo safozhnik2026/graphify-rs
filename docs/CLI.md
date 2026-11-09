@@ -12,7 +12,6 @@
   - [stats](#graphify-rs-stats) — Show graph statistics
   - [watch](#graphify-rs-watch) — Auto-rebuild on file changes
   - [serve](#graphify-rs-serve) — Start MCP server (16 tools)
-  - [ingest](#graphify-rs-ingest) — Fetch URL content
   - [hook](#graphify-rs-hook) — Git hook management
   - [install](#graphify-rs-install) — Install skill for AI agents
   - [init](#graphify-rs-init) — Create config file
@@ -232,29 +231,6 @@ graphify-rs serve
 
 # Serve a specific graph
 graphify-rs serve --graph /path/to/graph.json
-```
-
----
-
-### `graphify-rs ingest`
-
-Ingest content from a URL (arXiv papers, tweets, PDFs, webpages) and add it to the graph output directory.
-
-#### Parameters
-
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `<URL>` (positional) | `String` | *required* | URL to ingest content from. |
-| `--output <DIR>` | `-o` | `String` | `~/.graphify-rs/<name>-<hash>/` | Output directory. |
-
-#### Examples
-
-```bash
-# Ingest an arXiv paper
-graphify-rs ingest https://arxiv.org/abs/2301.00001
-
-# Ingest a webpage to custom output
-graphify-rs ingest https://example.com/docs --output my-graph
 ```
 
 ---

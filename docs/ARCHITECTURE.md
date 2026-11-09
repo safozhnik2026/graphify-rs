@@ -26,7 +26,6 @@ Source Files → detect → extract → build → cluster → analyze → export
 | `graphify-export` | 9 formats: JSON, HTML, split HTML, SVG, GraphML, Cypher, Wiki, Report, Obsidian | `export_json()`, `export_html()` |
 | `graphify-cache` | SHA256 content-hash caching for incremental rebuilds | `load_cached_from()`, `save_cached_to()` |
 | `graphify-security` | URL validation (SSRF), path traversal protection, label injection defense | `validate_url()`, `sanitize_path()` |
-| `graphify-ingest` | URL fetching: arXiv, tweets (oEmbed), PDFs, webpages | `ingest_url()` |
 | `graphify-serve` | MCP server with 15 query tools over JSON-RPC 2.0 stdio | `dispatch()`, `smart_summary()` |
 | `graphify-watch` | File monitoring with debounce, incremental rebuild | `watch()` |
 | `graphify-hooks` | Git hook install/uninstall (post-commit, post-checkout) | `install()`, `uninstall()` |

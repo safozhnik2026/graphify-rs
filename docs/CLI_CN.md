@@ -12,7 +12,6 @@
   - [stats](#graphify-rs-stats) — 图谱统计
   - [watch](#graphify-rs-watch) — 文件变更自动重建
   - [serve](#graphify-rs-serve) — 启动 MCP 服务器（16 个工具）
-  - [ingest](#graphify-rs-ingest) — 抓取 URL 内容
   - [hook](#graphify-rs-hook) — Git 钩子管理
   - [install](#graphify-rs-install) — 安装 AI 助手技能
   - [init](#graphify-rs-init) — 创建配置文件
@@ -235,29 +234,6 @@ graphify-rs serve
 
 # 为指定图谱提供服务
 graphify-rs serve --graph /path/to/graph.json
-```
-
----
-
-### `graphify-rs ingest`
-
-从 URL 抓取内容（arXiv 论文、推文、PDF、网页）并添加到图谱输出目录。
-
-#### 参数
-
-| 参数 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `<URL>`（位置参数） | `String` | *必填* | 要抓取内容的 URL。 |
-| `--output <DIR>` | `-o` | `String` | `~/.graphify-rs/<name>-<hash>/` | 输出目录。 |
-
-#### 示例
-
-```bash
-# 抓取 arXiv 论文
-graphify-rs ingest https://arxiv.org/abs/2301.00001
-
-# 抓取网页到自定义输出目录
-graphify-rs ingest https://example.com/docs --output my-graph
 ```
 
 ---

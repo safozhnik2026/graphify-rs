@@ -144,8 +144,7 @@ graphify-rs build --format html,svg   # 生成交互式可视化
 | `graphify-analyze` | 高连接节点、跨社区惊奇连接、建议问题、图谱 diff |
 | `graphify-export` | 9 种格式：JSON, HTML, 拆分 HTML, SVG, GraphML, Cypher, Wiki, 报告, Obsidian |
 | `graphify-cache` | SHA256 内容哈希缓存，支持增量重建 |
-| `graphify-security` | URL 校验（SSRF 防御）、路径遍历防护、标签注入防御 |
-| `graphify-ingest` | URL 抓取：arXiv 摘要、推文（oEmbed）、PDF、通用网页 |
+| `graphify-security` | 路径遍历防护、标签注入防御 |
 | `graphify-serve` | MCP 服务器，16 个查询工具，全文搜索索引，JSON-RPC 2.0 stdio |
 | `graphify-watch` | 文件监控 + debounce、代码变更时增量重建 |
 | `graphify-hooks` | Git 钩子安装/卸载/状态（post-commit, post-checkout）|

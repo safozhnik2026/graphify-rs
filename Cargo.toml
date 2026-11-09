@@ -10,7 +10,6 @@ members = [
     "crates/graphify-export",
     "crates/graphify-cache",
     "crates/graphify-security",
-    "crates/graphify-ingest",
     "crates/graphify-serve",
     "crates/graphify-watch",
     "crates/graphify-hooks",
@@ -32,9 +31,6 @@ serde_json = "1.0"
 
 # Async
 tokio = { version = "1", features = ["rt-multi-thread", "fs", "net", "io-util", "macros", "sync", "time"] }
-
-# HTTP
-reqwest = { version = "0.12", features = ["json"] }
 
 # Graph
 petgraph = { version = "0.6", features = ["serde-1"] }
@@ -67,7 +63,6 @@ graphify-analyze = { path = "crates/graphify-analyze", version = "0.8.0" }
 graphify-export = { path = "crates/graphify-export", version = "0.8.0" }
 graphify-cache = { path = "crates/graphify-cache", version = "0.8.0" }
 graphify-security = { path = "crates/graphify-security", version = "0.8.0" }
-graphify-ingest = { path = "crates/graphify-ingest", version = "0.8.0" }
 graphify-serve = { path = "crates/graphify-serve", version = "0.8.0" }
 graphify-watch = { path = "crates/graphify-watch", version = "0.8.0" }
 graphify-hooks = { path = "crates/graphify-hooks", version = "0.8.0" }
@@ -110,7 +105,6 @@ graphify-analyze.workspace = true
 graphify-export.workspace = true
 graphify-cache.workspace = true
 graphify-security.workspace = true
-graphify-ingest.workspace = true
 graphify-serve.workspace = true
 graphify-watch.workspace = true
 graphify-hooks.workspace = true

@@ -35,10 +35,11 @@ Instead:
 
 graphify-rs includes a dedicated `graphify-security` crate that provides:
 
-- **URL validation** — SSRF prevention for URL ingestion (blocks private IPs, localhost)
 - **Path traversal protection** — sanitizes file paths in exports (Obsidian, Wiki)
 - **Label injection defense** — escapes HTML/JS in node labels for visualization
 - **Filename length safety** — `truncate_to_bytes()` prevents OS filename limit crashes
+
+graphify-rs performs **no network I/O**: it has no HTTP client, no LLM provider, and no URL fetching. The binary links no TLS stack.
 
 ## Dependency Auditing
 
@@ -54,7 +55,6 @@ The following are **in scope** for security reports:
 
 - Remote code execution
 - Path traversal in file exports
-- SSRF via URL ingestion
 - Denial of service (e.g., stack overflow on malicious input)
 - Information disclosure via MCP server
 

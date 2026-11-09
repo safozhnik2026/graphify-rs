@@ -9,6 +9,7 @@ use std::path::{Path, PathBuf};
 mod cmd_build;
 mod config;
 mod install;
+mod memory;
 mod paths;
 mod skill;
 
@@ -139,12 +140,6 @@ enum Commands {
     Watch {
         #[arg(short, long, default_value = ".")]
         path: String,
-        #[arg(short, long)]
-        output: Option<String>,
-    },
-    /// Ingest URL content
-    Ingest {
-        url: String,
         #[arg(short, long)]
         output: Option<String>,
     },
@@ -407,7 +402,7 @@ async fn main() -> Result<()> {
                     .to_string()
             });
             let nodes_ref: Option<&[String]> = if nodes.is_empty() { None } else { Some(&nodes) };
-            let out = graphify_ingest::save_query_result(
+            let out = memory::save_query_result(
                 &question,
                 &answer,
                 Path::new(&mem_dir),
@@ -451,15 +446,6 @@ async fn main() -> Result<()> {
                     .to_string()
             });
             graphify_watch::watch_directory(Path::new(&path), Path::new(&out_dir)).await?;
-        }
-        Commands::Ingest { url, output } => {
-            let out_dir = output.unwrap_or_else(|| {
-                paths::resolve_default_output(Path::new("."))
-                    .to_string_lossy()
-                    .to_string()
-            });
-            let out = graphify_ingest::ingest_url(&url, Path::new(&out_dir)).await?;
-            println!("Ingested to {}", out.display());
         }
         Commands::Diff { old, new, output } => {
             cmd_diff(&old, &new, &output)?;

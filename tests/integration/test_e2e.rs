@@ -759,17 +759,6 @@ fn test_all_export_formats() {
 // ---------------------------------------------------------------------------
 
 #[test]
-fn test_security_url_validation() {
-    // Private IPs should be rejected
-    assert!(graphify_security::validate_url("http://127.0.0.1/admin").is_err());
-    assert!(graphify_security::validate_url("http://10.0.0.1/internal").is_err());
-
-    // Public URLs should be accepted
-    assert!(graphify_security::validate_url("https://example.com").is_ok());
-    assert!(graphify_security::validate_url("https://github.com/foo/bar").is_ok());
-}
-
-#[test]
 fn test_security_path_validation() {
     let root = std::env::temp_dir();
     // Path traversal should be rejected

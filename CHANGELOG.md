@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Removed (breaking)
+
+- **`graphify-rs ingest` command removed.** URL fetching (arXiv abstracts, tweets via oEmbed, PDFs, webpages) is gone. The tool now performs no network I/O of any kind.
+- **`graphify-ingest` crate deleted** — it existed only for URL fetching. Query-result persistence (`save-result`) moved into the binary crate (`src/memory.rs`).
+- **HTTP client removed from the dependency tree.** `reqwest` is gone from the workspace, and with it `rustls`, `rustls-webpki`, `rustls-pki-types`, `tokio-rustls`, `hyper-rustls`, `webpki-roots`, `ring`, `native-tls`, `openssl`, `urlencoding` and `url`. The binary links no TLS stack.
+- **SSRF URL validator removed** (`graphify_security::validate_url`) — it existed solely for `ingest`. Path-traversal protection and label-injection defense are unchanged.
+
+### Migration
+
+- To add web content, download it yourself and place it in the scanned directory. Note that since 0.8.2 documents are counted in the corpus metrics but are no longer turned into graph nodes (semantic extraction was removed).
+
 ## [0.8.2] - 2026-07-05
 
 > The package version stays at `0.8.2`. The breaking changes below were applied in this revision without a version bump.
