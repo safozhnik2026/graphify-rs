@@ -35,6 +35,38 @@ jobs:
       - run: cargo check --workspace
       - run: cargo test --workspace
 
+  no-network:
+    name: No network / no semantic extraction
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assert no LLM provider endpoints or credential reads in source
+        run: |
+          if grep -rInE "api\.anthropic\.com|api\.openai\.com|chat/completions|v1/messages|ANTHROPIC_API_KEY|OPENAI_API_KEY|openai_compatible|credentials\.json|llm:semantic" src crates; then
+            echo "::error::LLM / semantic extraction capability found in source"
+            exit 1
+          fi
+          echo "clean: no provider endpoints, API keys or credential reads"
+      - name: Assert no HTTP client dependency
+        run: |
+          if grep -rInE "^[[:space:]]*reqwest" --include=Cargo.toml .; then
+            echo "::error::reqwest dependency found"
+            exit 1
+          fi
+          if cargo tree --workspace -i reqwest >/dev/null 2>&1; then
+            echo "::error::reqwest is in the dependency tree"
+            exit 1
+          fi
+          echo "clean: no HTTP client in the dependency tree"
+      - name: Assert the semantic extraction module is absent
+        run: |
+          if [ -d crates/graphify-extract/src/semantic ]; then
+            echo "::error::crates/graphify-extract/src/semantic must not exist"
+            exit 1
+          fi
+          echo "clean: no semantic extraction module"
+
   fmt:
     name: Format
     runs-on: ubuntu-latest

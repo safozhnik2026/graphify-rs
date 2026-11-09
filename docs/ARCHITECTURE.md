@@ -1,6 +1,6 @@
 # Architecture
 
-graphify-rs is organized as a 14-crate Cargo workspace. Each crate has a single responsibility and communicates through shared types defined in `graphify-core`.
+graphify-rs is organized as a 13-crate Cargo workspace. Each crate has a single responsibility and communicates through shared types defined in `graphify-core`.
 
 ## Pipeline
 
@@ -10,7 +10,7 @@ Source Files → detect → extract → build → cluster → analyze → export
                  ▼         ▼          ▼         ▼         ▼         ▼
              .graphify  tree-sitter Leiden    PageRank   JSON, HTML,
               ignore    + regex AST + merge   + Tarjan    SVG, Report,
-                        + Claude API+ CodeGraph + embed  Obsidian, ...
+                                   + CodeGraph + embed  Obsidian, ...
 ```
 
 ## Crate Map
