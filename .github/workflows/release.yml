@@ -48,7 +48,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         shell: pwsh
         run: |
-          $tag = if ($env:GITHUB_REF_NAME) { $env:GITHUB_REF_NAME } else { "v0.8.2" }
+          $tag = if ($env:GITHUB_REF_NAME) { $env:GITHUB_REF_NAME } else { "v0.8.2001" }
           $staging = "graphify-rs-$tag-${{ matrix.target }}"
           New-Item -ItemType Directory -Path $staging
           Copy-Item "target/${{ matrix.target }}/release/${{ matrix.bin_name }}" -Destination "$staging/"
@@ -59,7 +59,7 @@ jobs:
       - name: Package binary (Unix)
         if: matrix.os != 'windows-latest'
         run: |
-          tag="${GITHUB_REF_NAME:-v0.8.2}"
+          tag="${GITHUB_REF_NAME:-v0.8.2001}"
           staging="graphify-rs-$tag-${{ matrix.target }}"
           mkdir -p "$staging"
           cp "target/${{ matrix.target }}/release/${{ matrix.bin_name }}" "$staging/"
@@ -89,7 +89,7 @@ jobs:
       - name: Create or Update GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || 'v0.8.2' }}
+          tag_name: ${{ github.ref_type == 'tag' && github.ref_name || 'v0.8.2001' }}
           files: artifacts/*
           generate_release_notes: true
           draft: false
