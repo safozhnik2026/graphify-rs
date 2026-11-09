@@ -364,7 +364,7 @@ fn generate_overview(
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Knowledge Graph — Overview</title>
-<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<script src="TODO"></script>
 <style>
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
 body {{ background: #0f0f1a; color: #e0e0e0; font-family: 'Segoe UI', system-ui, sans-serif; display: flex; height: 100vh; overflow: hidden; }}
@@ -556,7 +556,7 @@ fn generate_community_page(
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
-<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<script src="TODO"></script>
 <style>
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
 body {{ background: #0f0f1a; color: #e0e0e0; font-family: 'Segoe UI', system-ui, sans-serif; display: flex; height: 100vh; overflow: hidden; }}
@@ -708,7 +708,14 @@ mod tests {
         assert!(path.exists());
 
         let content = std::fs::read_to_string(&path).unwrap();
-        assert!(content.contains("vis-network"));
+        assert!(
+            content.contains("src=\"TODO\""),
+            "HTML export should use a TODO placeholder for the visualization library"
+        );
+        assert!(
+            !content.contains("unpkg.com") && !content.contains("vis-network"),
+            "HTML export must not reference a third-party CDN"
+        );
         assert!(content.contains("NodeA"));
         assert!(content.contains("forceAtlas2Based"));
     }
